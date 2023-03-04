@@ -33,6 +33,12 @@ async function calculate() {
         const resultInRealFormatted = parseFloat(resultInReal).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
 
         resultScreen.innerHTML = resultInRealFormatted
+
+        const maxLength = 10;
+
+        if (currencyUSD.value.length > maxLength) {
+            currencyUSD.value = currencyUSD.value.slice(0, maxLength); // Extrai os primeiros maxLength caracteres do valor do campo
+          }
     })
 }
 
