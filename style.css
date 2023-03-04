@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+    --bg-color: #F8FAFC;
+    --surface-primary: #ffffff;
+    --font-color: #0F172A;
+    --border-color: #94A3B8;
+
+    -webkit-tap-highlight-color: transparent;
+    font-size: 62.5%;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    font-size: 1.6rem;
+
+    color: var(--font-color);
+    background: var(--bg-color);
+}
+
+#app {
+    max-width: 80rem;
+    width: 90%;
+    margin: 16.6rem auto;
+
+    background: var(--surface-primary);
+    border-radius: 1.6rem;
+    box-shadow: 0px 4px 32px rgba(15, 23, 42, 0.15);
+}
+
+.container {
+    max-width: 64rem;
+    width: 90%;
+    margin: auto;
+    padding: 6.4rem 0;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 2rem;
+    line-height: 2.4rem;
+
+    margin-bottom: 1.6rem;
+}
+
+#conversion {
+    margin-bottom: 6.4rem;
+}
+
+#conversion .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.6rem;
+}
+
+#conversion .left,
+#conversion .right,
+#currency,
+.result {
+    width: 100%;
+    min-height: 5.6rem;
+    position: relative;
+}
+
+#currency,
+.result {
+    border-radius: .8rem;
+    border: 1px solid var(--border-color);
+    padding: 1.6rem 9.6rem 1.6rem 1.6rem;
+
+    overflow: hidden;
+}
+
+#conversion .left .country,
+#conversion .right .country {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1.6rem;
+
+    display: flex;
+    align-items: center;
+    gap: .8rem
+}
+
+#conversion .left .country::before,
+#conversion .right .country::before {
+    content: '';
+    display: inline-block;
+    width: .1rem;
+    height: 2.4rem;
+    margin-right: .6rem;
+    background: var(--border-color);
+}
+
+#currency {
+    outline: none;
+    position: relative;
+
+    font-size: 1.6rem;
+    line-height: 24px;
+}
+
+#currency:focus {
+    border: 1.5px solid #7C3AED;
+}
+
+#currency::-webkit-inner-spin-button {
+    -webkit-appearance: none; 
+    appearance: none;
+}
+
+.result {
+    display: flex;
+    align-items: center;
+    line-height: 2.4rem;
+
+    max-width: 29.2rem;
+}
+
+.middle i {
+    font-size: 2.4rem;
+}
+
+#exchange-rate h2 {
+    margin-bottom: 2.4rem;
+}
+
+#exchange-rate .graph img {
+    width: 100%;
+    margin-bottom: 3.2rem;
+}
+
+#exchange-rate .graph p {
+    text-align: center;
+    opacity: .7;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-wrap: wrap;
+    }
+
+    .middle {
+        margin: auto;
+    }
+}
+
