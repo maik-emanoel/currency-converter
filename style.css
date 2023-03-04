@@ -149,6 +149,10 @@ h2 {
         flex-wrap: wrap;
     }
 
+    .result {
+        max-width: 62.2rem;
+    }
+
     .middle {
         margin: auto;
     }
