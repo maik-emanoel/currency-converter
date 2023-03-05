@@ -158,3 +158,8 @@ h2 {
     }
 }
 
+@media (max-width: 425px) {
+    #app {
+        margin: 10.6rem auto;
+    }
+}
