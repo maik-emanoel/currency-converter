@@ -126,6 +126,10 @@ h2 {
     max-width: 29.2rem;
 }
 
+.middle {
+    cursor: pointer;
+}
+
 .middle i {
     font-size: 2.4rem;
 }

@@ -1,5 +1,8 @@
-const currencyUSD = document.querySelector('#currency')
+const currency = document.querySelector('#currency')
 const resultScreen = document.querySelector('.result')
+const inverterCurrencyBtn = document.querySelector('.middle')
+const countryLeftSide = document.querySelector('.left .country')
+const countryRightSide = document.querySelector('.right .country')
 
 async function getValueDollar() {
     const url = await fetch('https://economia.awesomeapi.com.br/last/USD-BRL')
@@ -19,7 +22,7 @@ async function formatingValueDollar() {
 }
 
 window.addEventListener('load', () => {
-    if(currencyUSD.value == '') {
+    if(currency.value == '') {
         resultScreen.innerHTML = 'R$ 0,00'
     }
 })
@@ -27,8 +30,10 @@ window.addEventListener('load', () => {
 async function calculate() {
     const valueDollarToday = await formatingValueDollar()
 
-    currencyUSD.addEventListener('input', () => {
-        const inputValue = currencyUSD.value
+    currency.addEventListener('input', calculateDollarToReal)
+
+    function calculateDollarToReal() {
+        const inputValue = currency.value
         const resultInReal = (valueDollarToday * inputValue).toFixed(2)
         const resultInRealFormatted = parseFloat(resultInReal).toLocaleString('pt-br', {style: 'currency', currency: 'BRL'})
 
@@ -36,10 +41,55 @@ async function calculate() {
 
         const maxLength = 10;
 
-        if (currencyUSD.value.length > maxLength) {
-            currencyUSD.value = currencyUSD.value.slice(0, maxLength); // Extrai os primeiros maxLength caracteres do valor do campo
+        if (currency.value.length > maxLength) {
+            currency.value = currency.value.slice(0, maxLength); // Extrai os primeiros maxLength caracteres do valor do campo
           }
-    })
+    }
+
+    inverterCurrencyBtn.addEventListener('click', inverterCurrency)
+
+    function inverterCurrency() {
+        currency.classList.toggle('brl')
+        currency.value = ''
+        resultScreen.innerHTML = ''
+
+        const brazilCountry = `
+        <img src="./assets/brazil-flag.svg" alt="Ícone da bandeira do Brasil">
+        <span class="country-currency">BRL</span>
+        `
+        const usaCountry = `
+        <img src="./assets/usa-flag.svg" alt="Ícone da bandeira dos Estados Unidos da Ámerica">
+        <span class="country-currency">USD</span>
+        `
+
+        if(currency.classList.contains('brl')) {
+            countryLeftSide.innerHTML = brazilCountry
+            countryRightSide.innerHTML = usaCountry
+
+            if(currency.value == '') {
+                resultScreen.innerHTML = '$ 0.00'
+            }
+
+            currency.addEventListener('input', function calculateRealToDollar() {
+                const inputValue = currency.value
+                const resultInDollar = (inputValue / valueDollarToday).toFixed(2)
+                const resultInDollarFormatted = parseFloat(resultInDollar).toLocaleString('en-US', {style: 'currency', currency: 'USD'})
+        
+                resultScreen.innerHTML = resultInDollarFormatted
+            })
+        } else {
+            countryLeftSide.innerHTML = usaCountry
+            countryRightSide.innerHTML = brazilCountry
+
+            if(currency.value == '') {
+                resultScreen.innerHTML = 'R$ 0,00'
+            }
+
+            currency.addEventListener('input', () => {
+                calculateDollarToReal()
+            })
+        }
+    }
 }
 
 calculate()
