@@ -136,15 +136,44 @@ h2 {
     margin-bottom: 2.4rem;
 }
 
-#exchange-rate .graph img {
-    width: 100%;
-    margin-bottom: 3.2rem;
+.tooltip {
+    background-color: white;
+    box-shadow: 0 .4rem 1.6rem rgb(15 23 42 / .15);
+    border-radius: .4rem;
+    padding: .8rem;
 }
-
-#exchange-rate .graph p {
+  
+  
+.chart-controls {
+    display: flex;
+    justify-content: space-between;
+    margin: -2.2rem .8rem 0 4rem;
+}
+  
+.chart-controls button {
+    background-color: transparent;
+    border: 0;
+  
+    width: 4rem;
+    height: 2.4rem;
+  
+    font-size: 1.2rem;
+    line-height: 1.6rem;
     text-align: center;
-    opacity: .7;
+  
+    cursor: pointer;
 }
+  
+.chart-controls button:hover,
+.chart-controls button.active {
+    background-color: #7c3aed;
+    color: white;
+    border-radius: 999px;
+    padding: .4rem .8rem;
+
+    transition: all .3s ease-in-out;
+}
+  
 
 @media (max-width: 768px) {
     .content {
