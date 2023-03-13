@@ -52,6 +52,7 @@ async function calculate() {
     inverterCurrencyBtn.addEventListener('click', inverterCurrency)
     function inverterCurrency() {
         currency.classList.toggle('brl')
+        currency.focus()
         currency.value = ''
         resultScreen.innerHTML = ''
 
